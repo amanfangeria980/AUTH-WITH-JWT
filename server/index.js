@@ -7,7 +7,8 @@ const cookieParser = require("cookie-parser");
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    // origin: ["http://localhost:3000"],
+    origin: ["mongodb+srv://root:root%40123@cluster0.ggxoapv.mongodb.net/"],
     method: ["GET", "POST"],
     credentials: true,
   })
