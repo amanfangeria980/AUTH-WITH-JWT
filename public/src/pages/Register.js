@@ -6,10 +6,14 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="container">
       <h2>Register Account</h2>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label htmlFor="email">Email</label>
           <input
