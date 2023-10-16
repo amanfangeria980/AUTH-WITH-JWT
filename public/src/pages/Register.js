@@ -23,7 +23,6 @@ const Register = () => {
     } catch (err) {
       console.log(err.message);
     }
-    console.log(data);
   };
   return (
     <div className="container">
