@@ -12,7 +12,7 @@ const App = () => {
         <Routes>
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
-          <Route exact path="/secret" element={<Secret />}></Route>
+          <Route exact path="/" element={<Secret />}></Route>
         </Routes>
       </BrowserRouter>
     </>
