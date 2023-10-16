@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
 const Register = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data } = await axios.post("http://localhost:4000/register", {
+        ...values,
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   return (
     <div className="container">
