@@ -2,11 +2,24 @@ const UserModel = require("../Models/UserModel");
 const jwt = require("jsonwebtoken");
 const maxAge = 3 * 24 * 60 * 60;
 
-
 const createToken = (id) => {
   return jwt.sign({ id }, "amanfang", {
     expiresIn: maxAge,
   });
+};
+
+const handleErrors = (err) => {
+  let errors = { email: "", password: "" };
+  if (err.code === 11000) {
+    errors.email = "Email is already registered";
+  }
+
+  if (err.message.includes("Users validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+  return errors;
 };
 
 module.exports.register = async (req, res) => {
@@ -28,6 +41,11 @@ module.exports.register = async (req, res) => {
     });
   } catch (err) {
     console.log(err.message);
+    const errors = handleErrors(err);
+    res.json({
+      errors,
+      create: false,
+    });
   }
 };
 module.exports.login = async (req, res) => {};
