@@ -8,8 +8,7 @@ const createToken = (id) => {
   });
 };
 
-module.export.register = async (req, res) => {};
-module.export.login = async (req, res) => {
+module.export.register = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await UserModel.create({
@@ -30,3 +29,4 @@ module.export.login = async (req, res) => {
     console.log(err.message);
   }
 };
+module.export.login = async (req, res) => {};
