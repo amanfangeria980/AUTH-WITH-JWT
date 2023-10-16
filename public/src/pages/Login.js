@@ -1,15 +1,48 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
 const Login = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  const generateError = (err) => {
+    toast.error(err, {
+      position: "bottom-right",
+    });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/login",
+        {
+          ...values,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(data);
+      if (data) {
+        if (data.errors) {
+          const { email, password } = data.errors;
+          if (email) generateError(email);
+          else if (password) generateError(password);
+        } else {
+          navigate("/");
+        }
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <div className="container">
       <h2>Login Account</h2>
