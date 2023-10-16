@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const app = express();
 const authRoutes = require("./Routes/AuthRoutes");
 const cookieParser = require("cookie-parser");
-
+const localURL="mongodb://127.0.0.1:27017/jwt";
+const cloudURL="mongodb+srv://root:root%40123@cluster0.ggxoapv.mongodb.net/";
 app.use(
   cors({
-    // origin: ["http://localhost:3000"],
-    origin: ["mongodb+srv://root:root%40123@cluster0.ggxoapv.mongodb.net/"],
+    origin: ["https://authjwtsite.netlify.app"],
     method: ["GET", "POST"],
     credentials: true,
   })
@@ -22,7 +22,7 @@ app.listen(4000, () => {
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/jwt", {
+  .connect(cloudURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
