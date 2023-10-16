@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+const backendURL="https://auth-with-jwt-backend.onrender.com";
 
 const Secret = () => {
   const [cookies, setCookie, removeCookie] = useCookies([]);
@@ -14,7 +15,7 @@ const Secret = () => {
         navigate("/login");
       } else {
         const { data } = await axios.post(
-          "http://localhost:4000/",
+          `${backendURL}/`,
           {},
           {
             withCredentials: true,
