@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const authRoutes = require("./Routes/AuthRoutes");
+const cookieParser = require("cookie-parser");
 
 app.use(
   cors({
@@ -12,6 +13,7 @@ app.use(
   })
 );
 
+app.use(cookieParser());
 app.use(express.json());
 app.use("/", authRoutes);
 app.listen(4000, () => {
