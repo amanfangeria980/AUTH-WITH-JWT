@@ -5,7 +5,7 @@ const app = express();
 const authRoutes = require("./Routes/AuthRoutes");
 const cookieParser = require("cookie-parser");
 const localURL="mongodb://127.0.0.1:27017/jwt";
-const cloudURL="mongodb+srv://root:root%40123@cluster0.ggxoapv.mongodb.net/";
+const cloudURL="mongodb+srv://root:root%40123@cluster0.ggxoapv.mongodb.net/jwt";
 app.use(
   cors({
     origin: ["https://authjwtsite.netlify.app"],
