@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
+const authRoutes = require("./Routes/AuthRoutes");
 
 app.use(
   cors({
@@ -12,7 +13,7 @@ app.use(
 );
 
 app.use(express.json());
-
+app.use("/", authRoutes);
 app.listen(4000, () => {
   console.log("Server started on Port 4000");
 });
