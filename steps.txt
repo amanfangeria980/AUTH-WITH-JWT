@@ -1,0 +1,5 @@
+-First we create two folder public and server
+-Under public, we create a react app using -> npx create-react-app .
+-Under server, we initialised using -> npm init -y
+-Under server, we installed following packages: express nodemon cors cookie-parser jsonwebtoken brcypt
+-Under server, create a index.js file
